@@ -20,7 +20,9 @@ Multi-label image classification aims to assign images to multiple possible labe
 
 3. The TCMTD is a multi-label classification task for 9 different TCM pathologies, conditions viz. ‘Qixu’ (qi deficiency), ‘Qiyu’ (qi stagnation), ‘Shire’ (damp heat), ‘Tanshi’ (phlegm damp), ‘Tebing’ (idiosyncratic), ‘Xueyu’ (blood stagnation), ‘Yinxu’ (yin deficiency), ‘Pinghe’ (balanced), and ‘Yangxu’ (yang deficiency), which is a multi-label classification task. **Due to ethical and personal privacy issues, this dataset is not publicly available.**
 
+## Citation
 
+We now have a related paper that you can cite in this repository 🤗 .
 
 ## Thanks
 
