@@ -1,7 +1,9 @@
 # CTransCNN: Combining Transformer and CNN in Multi-Label Medical Image Classification
 
+## demo
 ![demo](./picture/demo.gif)
 
+## model
 ![model](./picture/model.png)
 
 ![reslut](./picture/result.png)
