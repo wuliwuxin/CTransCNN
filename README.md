@@ -5,7 +5,7 @@
 ![model](./picture/model.png)
 
 
-<img src="./picture/result.png" alt="reslut" style="zoom:30%;" />
+<img src="./picture/result.png" alt="reslut" style="zoom:20%;" />
 
 ## Abstract
 
