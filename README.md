@@ -4,7 +4,8 @@
 ## model
 ![model](./picture/model.png)
 
-![reslut](./picture/result.png)
+
+<img src="./picture/result.png" alt="reslut" style="zoom:30%;" />
 
 ## Abstract
 
