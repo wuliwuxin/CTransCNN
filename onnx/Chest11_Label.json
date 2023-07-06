@@ -1,0 +1,13 @@
+{
+    "0": "ETT-Abnormal",
+    "1": "ETT-Borderline",
+    "2": "ETT-Normal",
+    "3": "NGT-Abnormal",
+    "4": "NGT-Borderline",
+    "5": "NGT-Incompletely-Imaged",
+    "6": "NGT-Normal",
+    "7": "CVC-Abnormal",
+    "8": "CVC-Borderline",
+    "9": "CVC-Normal",
+    "10": "Swan-Ganz-Catheter-Present"
+}
