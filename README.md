@@ -25,6 +25,10 @@ Multi-label image classification aims to assign images to multiple possible labe
 
 We now have a related paper that you can cite in this repository 🤗 .
 
+```
+Waiting for updates
+```
+
 ## Thanks
 
 We implemented our models using the open source computer vision library [MMCV](github.com/open-mmlab/mmcv), which was developed by OpenMMLab. We would like to express our gratitude to the developers for their valuable contributions to the research community.
