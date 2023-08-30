@@ -1,4 +1,4 @@
-![image](https://github.com/wuliwuxin/CTransCNN/assets/25049557/ee6db750-6142-4ec9-9f8b-81de3d361982)# CTransCNN: Combining Transformer and CNN in Multi-Label Medical Image Classification
+# CTransCNN: Combining Transformer and CNN in Multi-Label Medical Image Classification
 ![demo](./picture/demo.gif)
 
 ## model
