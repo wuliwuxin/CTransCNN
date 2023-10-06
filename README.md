@@ -8,7 +8,8 @@
 ![reslut](./picture/result.png)
 
 ## Abstract
-Multi-label image classification aims to assign images to multiple possible labels. In this task, each image may be associated with multiple labels, making it more challenging than the single-label classification problems. For instance, convolutional neural networks (CNNs) have not met the performance requirement in utilizing statistical dependencies between labels in this study. Additionally, data imbalance is a common problem in machine learning that needs to be considered for multilabel medical image classification. Furthermore, the concatenation of a CNN and a transformer suffers from the disadvantage of lacking direct interaction and information exchange between the two models. To address these issues, we propose a novel hybrid deep learning model called CTransCNN. This model comprises three main components in both the CNN and transformer branches: a multi-label multi-head attention enhanced feature module (MMAEF), a multi-branch residual module (MBR), and an information interaction module (IIM). The MMAEF enables the exploration of implicit correlations between labels, the MBR facilitates model optimization, and the IIM enhances feature transmission and increases nonlinearity between the two branches to help accomplish the multilabel medical image classification task. We evaluated our approach using publicly available datasets, namely the ChestX-ray11 and NIH ChestX-ray14, along with our self-constructed traditional Chinese medicine tongue dataset (TCMTD). Extensive multilabel image classification experiments were conducted comparing our approach with excellent methods. The experimental results demonstrate that the framework we have developed exhibits strong competitiveness compared to previous research. Its robust generalization ability makes it applicable to other medical multilabel image classification tasks.
+
+Multilabel image classification aims to assign images to multiple possible labels. In this task, each image may be associated with multiple labels, making it more challenging than the single-label classification problems. For instance, convolutional neural networks (CNNs) have not met the performance requirement in utilizing statistical dependencies between labels in this study. Additionally, data imbalance is a common problem in machine learning that needs to be considered for multilabel medical image classification. Furthermore, the concatenation of a CNN and a transformer suffers from the disadvantage of lacking direct interaction and information exchange between the two models. To address these issues, we propose a novel hybrid deep learning model called CTransCNN. This model comprises three main components in both the CNN and transformer branches: a multilabel multihead attention enhanced feature module (MMAEF), a multibranch residual module (MBR), and an information interaction module (IIM). The MMAEF enables the exploration of implicit correlations between labels, the MBR facilitates model optimization, and the IIM enhances feature transmission and increases nonlinearity between the two branches to help accomplish the multilabel medical image classification task. We evaluated our approach using publicly available datasets, namely the ChestX-ray11 and NIH ChestX-ray14, along with our self-constructed traditional Chinese medicine tongue dataset (TCMTD). Extensive multilable image classification experiments were conducted comparing our approach with excellent methods. The experimental results demonstrate that the framework we have developed exhibits strong competitiveness compared to previous research. Its robust generalization ability makes it applicable to other medical multilabel image classification tasks.
 
 ## Dataset
 
@@ -22,10 +23,19 @@ Multi-label image classification aims to assign images to multiple possible labe
 
 ## Citation
 
-We now have a related paper that you can cite in this repository 🤗 .
+We now have a related paper that you can cite in this repository 🤗 . [Download paper](https://www.sciencedirect.com/science/article/pii/S0950705123007803).
 
-```
-Waiting for updates
+```bash
+@article{WU2023111030,
+  title = {CTransCNN: Combining transformer and CNN in multilabel medical image classification},
+  journal = {Knowledge-Based Systems},
+  pages = {111030},
+  year = {2023},
+  issn = {0950-7051},
+  doi = {https://doi.org/10.1016/j.knosys.2023.111030},
+  url = {https://www.sciencedirect.com/science/article/pii/S0950705123007803},
+  author = {Xin Wu and Yue Feng and Hong Xu and Zhuosheng Lin and Tao Chen and Shengke Li and Shihan Qiu and Qichao Liu and Yuangang Ma and Shuangsheng Zhang}
+}
 ```
 
 ## Thanks
