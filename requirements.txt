@@ -1,0 +1,7 @@
+torchvision==0.12.0
+torchaudio==0.11.0
+mmcv-full==1.6.1
+numpy==1.24.3
+matplotlib==3.7.1
+scikit-learn==1.2.2
+numpy==1.23.0
