@@ -1,8 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-# @Author: Wu
-# @Desc: { 模块描述 }
-# @Date: 2023/03/29 下午8:19
 import torch
 import numpy as np
 from sklearn.metrics import roc_auc_score
@@ -30,7 +25,6 @@ def add_multi_label_auc(pred, target, thr=None, k=None):
         pos_inds = np.zeros_like(pred)
         pos_inds[inds[0], sort_inds_] = 1
 
-    # 将标签转换为numpy数组
     if isinstance(pred, torch.Tensor) and isinstance(target, torch.Tensor):
         pred = pred.detach().cpu().numpy()
         target = target.detach().cpu().numpy()
@@ -38,10 +32,8 @@ def add_multi_label_auc(pred, target, thr=None, k=None):
         raise TypeError('pred and target should both be torch.Tensor or'
                         'np.ndarray')
 
-    # 初始化多标签AUC值
     total_auc = 0.
 
-    # 计算每个标签的AUC值，并对所有标签的AUC值求平均
     for i in range(target.shape[1]):
         try:
             auc = roc_auc_score(target[:, i], pred[:, i])
