@@ -60,8 +60,8 @@ class ConvBlock(BaseModule):
             groups=groups,
             padding=1,
             bias=False)
-        self.bn2 = build_norm_layer(norm_cfg, mid_channels)[1]  # norm_cfg为BN
-        self.act2 = build_activation_layer(act_cfg)  # act_cfg为ReLU
+        self.bn2 = build_norm_layer(norm_cfg, mid_channels)[1] 
+        self.act2 = build_activation_layer(act_cfg) 
 
         # 1x1 Conv-BN ReLU
         self.conv3 = nn.Conv2d(
@@ -74,7 +74,6 @@ class ConvBlock(BaseModule):
         self.bn3 = build_norm_layer(norm_cfg, out_channels)[1]
         self.act3 = build_activation_layer(act_cfg)
 
-        # [32, 64, 56, 56] 转为 [32, 16, 56, 56]
         self.conv_64_16 = nn.Conv2d(
             mid_channels,
             mid_channels,
@@ -83,7 +82,6 @@ class ConvBlock(BaseModule):
             padding=0,
             bias=False)
 
-        # 默认 with_residual_conv = False  是否增加一个额外的卷积模块到identity连接中。默认为False
         if with_residual_conv:
             # 1x1 Conv-BN ReLU
             self.residual_conv = nn.Conv2d(
@@ -103,7 +101,7 @@ class ConvBlock(BaseModule):
         nn.init.zeros_(self.bn3.weight)
 
     def forward(self, x, fusion_features=None, out_conv2=True):
-        identity = x  # 残差侧分支 用于 skip connect
+        identity = x 
 
         # 1x1 Conv-BN ReLU
         x = self.conv1(x)
@@ -111,22 +109,21 @@ class ConvBlock(BaseModule):
 
         # method2 add 1x1 bn
         x_identity_bn = self.conv_identity(identity)
-        x_identity_bn = self.bn_out(x_identity_bn)  # x_identity_bn: [32, 64, 56, 56]
+        x_identity_bn = self.bn_out(x_identity_bn)
 
         x = self.act1(x)
 
         x_1 = self.conv2(x) if fusion_features is None else self.conv2(
             x + fusion_features)
-        x = self.bn2(x_1)  # x_1: [32, 16, 56, 56]    x: [32, 16, 56, 56]
+        x = self.bn2(x_1)
 
         # add rep method1
-        x_conv1_bn = self.conv_64_16(x_1)  # x_conv1_bn: [32, 64, 56, 56]
-        x_bn = self.bn2(x_1)  # x_bn: [32, 16, 56, 56]
+        x_conv1_bn = self.conv_64_16(x_1) 
+        x_bn = self.bn2(x_1)
         x = x + x_conv1_bn + x_bn
 
         x2 = self.act2(x)
 
-        # 1x1 Conv-BN  注意这里没有ReLU
         x = self.conv3(x2)
         x = self.bn3(x)
 
@@ -137,7 +134,6 @@ class ConvBlock(BaseModule):
             identity = self.residual_conv(identity)
             identity = self.residual_bn(identity)
 
-        # 残差连接 相加后 进行 ReLU
         x = x + identity + x_identity_bn
 
         x = self.act3(x)
@@ -182,7 +178,6 @@ class C2T(BaseModule):
     def forward(self, x, x_t):
         # 1x1 Conv-AvgPooling-LayerNorm-GELU
         x = self.conv_project(x)  # [N, C, H, W]
-        # flatten(dim)表示，从第dim个维度开始展开
         # [N, C, H, W]-->[N, C, H`, W`]-->[N, C, H` * W`]-->[N, H` * W`, C]
         x1 = x
         x1 = self.conv1(x1)
@@ -233,7 +228,7 @@ class T2C(BaseModule):
     def forward(self, x, H, W):
         B, _, C = x.shape
         # [N, 197, 384] -> [N, 196, 384] -> [N, 384, 196] -> [N, 384, 14, 14]
-        if self.with_cls_token:  # 排除cls token
+        if self.with_cls_token: 
             x_r = x[:, 1:].transpose(1, 2).reshape(B, C, H, W)
         else:
             x_r = x.transpose(1, 2).reshape(B, C, H, W)
@@ -252,8 +247,6 @@ class T2C(BaseModule):
         out = x + x1
         return out
 
-
-# CNN block 和 transformer block融合模块
 class IIMBlock(BaseModule):
 
     def __init__(self,
@@ -386,19 +379,19 @@ class my_hybird_CTransCNN(BaseBackbone):
                 f'Custom arch needs a dict with keys {essential_keys}'
             self.arch_settings = arch
 
-        self.num_features = self.embed_dims = self.arch_settings['embed_dims']  # num_feature:384; embed_dims:384
-        self.depths = self.arch_settings['depths']  # depths:12
-        self.num_heads = self.arch_settings['num_heads']  # num_heads:6
-        self.channel_ratio = self.arch_settings['channel_ratio']  # channel_ratio:1
+        self.num_features = self.embed_dims = self.arch_settings['embed_dims']
+        self.depths = self.arch_settings['depths'] 
+        self.num_heads = self.arch_settings['num_heads']
+        self.channel_ratio = self.arch_settings['channel_ratio'] 
 
-        if isinstance(out_indices, int):  # out_indices: -1
-            out_indices = [out_indices]  # out_indices=[-1]    {list:1}  len: 1
+        if isinstance(out_indices, int): 
+            out_indices = [out_indices]
         assert isinstance(out_indices, Sequence), \
             f'"out_indices" must by a sequence or int, ' \
             f'get {type(out_indices)} instead.'
-        for i, index in enumerate(out_indices):  # i: 0  index: -1
+        for i, index in enumerate(out_indices): 
             if index < 0:
-                out_indices[i] = self.depths + index + 1  # out_indices[i] = [12]    {list:1}  len: 1
+                out_indices[i] = self.depths + index + 1 
                 assert out_indices[i] >= 0, f'Invalid out_indices {index}'
         self.out_indices = out_indices  # out_indices = [12]
 
