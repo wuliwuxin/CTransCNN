@@ -18,8 +18,8 @@ class My_MltilabelData(MultiLabelDataset):
             list[dict]
         """
         data_infos = []
-        # img_ids 是一个列表，每个元素是一个字符串，表示图片的名称
-        lines = mmcv.list_from_file(self.ann_file)  # self.ann_file 是字符串，此文件中的每一行都是我们自己存的
+
+        lines = mmcv.list_from_file(self.ann_file)  
         for line in lines:
             # imgrelativefile, imglabel = line.strip().rsplit('\t', 1)
             imgrelativefile, imglabel = line.strip().rsplit('\t', 1)
