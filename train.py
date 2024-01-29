@@ -1,35 +1,3 @@
-# Copyright (c) OpenMMLab. All rights reserved.
-"""
-在mmcls目录下，mmclassification为我们收录了常用的模型、预处理方法、数据集读取方法、训练参数。为了灵活调试各种参数，我们需要深入到mmcls目录中。
-mmcls结构:
-1. mmcls第一级目录下主要有apis, core, datasets, models, utils五个模块。
-2. apis：封装了训练、测试、推理的过程
-3. core：提供了一些工具，fp16，评判标准
-4. datasets：提供了数据加载接口、数据增强方法
-    1. 在这一层的py文件，用于读取数据
-    2. pipline目录，该目录下收集了常用的数据增强方法
-    3. samplers目录，采样方式
-5. models：提供了常用的backbone、head、loss、necks……
-    1. ackbones目录，集成了常见的主干网络
-    2. heads目录，提供了多种分类的输出方式
-    3. necks目录，数据backbone与head之间，更好的利用backbone提供的特征，收录了GAP
-    4. losses目录，提供了常见的损失函数
-    5. classifiers目录，将backbone、necks、head、losses集成起来
-    6. utils目录，提供了部分模型封装好的模块
-6. utils：辅助功能  日志模块在这个部分
-"""
-
-"""
-多标签分类tips
-相信大家在做项目时都会遇到数据量不足，数据样本分布不均等问题。下面我结合自己的经验给大家提供一些tips
-1.数据量有限时（train数据少于1w张时），小模型的效果会由于大模型（过拟合）。
-2.使用ClassBalancedDataset，对样本少的类别重复采样，可以有效提高召回。
-3.loss，我试验过focal loss，asymmetric loss，效果很差（召回很高，但是准确率低得离谱）。focal与 asymmetric loss都是为了降低负样本在loss的占比，从而平衡正负样本。
-asymmetric将gamma分为gamma+与gamma-，相较于focal loss中gamma=2来说，asymmetric更加夸张的降低了负样本的loss（因为我的数据类别分布极不均匀，在实验中，
-正样本loss大概是负样本loss的几十倍甚至几百倍），这就导致模型极度聚焦于正样本，模型只知道什么是正确的，对错误的并不care，因此recall提高了，precision却低的离谱。
-focal loss也存在这样的问题，但是alpha可以稍微缓解这样的情况。
-4.魔改模型结构，注意力机制，dropout，框架等等各种。
-"""
 import argparse
 import copy
 import os
