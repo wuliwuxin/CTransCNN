@@ -1,4 +1,3 @@
-# Copyright (c) OpenMMLab. All rights reserved.
 from typing import Sequence
 
 import numpy as np
@@ -16,27 +15,6 @@ from .base_backbone import BaseBackbone
 
 
 class TransformerDecoderLayer(BaseModule):
-    """Implements one encoder layer in Vision Transformer.
-
-    Args:
-        embed_dims (int): The feature dimension
-        num_heads (int): Parallel attention heads
-        feedforward_channels (int): The hidden dimension for FFNs
-        drop_rate (float): Probability of an element to be zeroed
-            after the feed forward layer. Defaults to 0.
-        attn_drop_rate (float): The drop out rate for attention output weights.
-            Defaults to 0.
-        drop_path_rate (float): Stochastic depth rate. Defaults to 0.
-        num_fcs (int): The number of fully-connected layers for FFNs.
-            Defaults to 2.
-        qkv_bias (bool): enable bias for qkv if True. Defaults to True.
-        act_cfg (dict): The activation config for FFNs.
-            Defaluts to ``dict(type='GELU')``.
-        norm_cfg (dict): Config dict for normalization layer.
-            Defaults to ``dict(type='LN')``.
-        init_cfg (dict, optional): Initialization config dict.
-            Defaults to None.
-    """
 
     def __init__(self,
                  embed_dims, 
