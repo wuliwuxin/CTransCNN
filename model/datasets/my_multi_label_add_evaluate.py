@@ -19,8 +19,8 @@ class My_MltilabelData(MultiLabelDataset):
             list[dict]
         """
         data_infos = []
-        # img_ids 是一个列表，每个元素是一个字符串，表示图片的名称
-        lines = mmcv.list_from_file(self.ann_file)  # self.ann_file 是字符串，此文件中的每一行都是我们自己存的
+
+        lines = mmcv.list_from_file(self.ann_file) 
         for line in lines:
             imgrelativefile, imglabel = line.strip().rsplit('\t', 1)
             gt_label = np.asarray(list(map(int, imglabel.split(","))), dtype=np.int8)
@@ -88,7 +88,6 @@ class My_MltilabelData(MultiLabelDataset):
         assert len(gt_labels) == num_imgs, 'dataset testing results should ' \
                                            'be of the same length as gt_labels.'
 
-        # print("执行evaluate函数，类别:", self.CLASSES)
         precision_class, recall_class, picture_acc = self.calculate_class_acc(results, gt_labels, thr=0.5)
         assert len(precision_class) == len(recall_class) == len(self.CLASSES), "必然长度一样"
         precision_class_topk, recall_class_topk, picture_acc_topk = self.calculate_class_acc(results, gt_labels, k=1)
@@ -106,7 +105,6 @@ class My_MltilabelData(MultiLabelDataset):
         for index, (classname, recall) in enumerate(zip(self.CLASSES, recall_class_topk)):
             eval_results[classname + "_recall_top1"] = recall
 
-        # 打印参数
         for k, v in eval_results.items():
             print(str(k).ljust(len("10000temporaryPictures_healthCode_recall_thr") + 10), ": ", str(v).ljust(30))
         return eval_results
