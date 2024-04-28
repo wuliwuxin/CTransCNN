@@ -13,9 +13,9 @@ Multilabel image classification aims to assign images to multiple possible label
 
 ## Dataset
 
-1. [ChestX-ray11](kaggle.com/competitions/ranzcr-clip-catheter-line-classification/data): In this study, 30,083 CXR image training data were used for multi-label sample classification due to computer limitations.
+1. **ChestX-ray11**: In this study, 30,083 CXR image training data were used for multi-label sample classification due to computer limitations. Link: [kaggle.com/competitions/ranzcr-clip-catheter-line-classification/data](kaggle.com/competitions/ranzcr-clip-catheter-line-classification/data)
 
-2. [NIH ChestX-ray14](nihcc.app.box.com/v/ChestXray-NIHCC):  Due to computational limitations, this study performed multi-label sample classification on 51759 CXR images, named NIH ChestX-ray14, rather than the complete set of 112120 frontal images. 
+2. **NIH ChestX-ray14**:  Due to computational limitations, this study performed multi-label sample classification on 51759 CXR images, named NIH ChestX-ray14, rather than the complete set of 112120 frontal images. Link: [kaggle.com/competitions/ranzcr-clip-catheter-line-classification/data](nihcc.app.box.com/v/ChestXray-NIHCC) 
 
    **ChestX-ray11** and **NIH ChestX-ray14** are shown in folders chest11 and chest14.
 
