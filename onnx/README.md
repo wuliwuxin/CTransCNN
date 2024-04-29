@@ -15,4 +15,3 @@ This demo illustrates how to perform inference on a single image using a deep le
 4. **Inference**: Now, input the preprocessed image into the model for inference. The model will output class labels prediction results.
 
 5. **Result Presentation**: Finally, present the inference results. 
-
